@@ -10,3 +10,13 @@ before_install:
 
 script:
   - docker run -e CI=true gourab-rout/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-025741564249"
+  bucket_path: "docker-react"
+  on:
+    branch: master
