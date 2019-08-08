@@ -3,4 +3,10 @@ services:
   - docker
 
 before_install:
+  - echo "BEFORE INSTALL START"
+  - gem install bundler --pre
+  - echo "BEFORE INSTALL END"
   - docker build -t gourab-rout/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run gourab-rout/docker-react npm run test -- --coverage
